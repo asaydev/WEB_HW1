@@ -2,15 +2,15 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const crypto = require("crypto");
-const fs = require("fs")
+const fs = require("fs");
 const port = 3000;
 
-app.use(cors())
+app.use(cors());
 
-app.use(express.json())
+app.use(express.json());
 
 app.post("/node/sha256", (req, res) => {
-    let num1 = req.query.firsinput;
+    let num1 = req.query.firstinput;
     let num2 = req.query.secondinput;
     if (typeof num1 == "undefined" || typeof num2 == "undefined") {
         return res.status(400).json({message: "inputs can't be empty"})
@@ -38,9 +38,10 @@ app.get("/node/write", (req, res) => {
     file = fs.readFile("./test.txt", function (err, data) {
         if (err) return res.status(500).json({message: "internal server error"});
         let lines = data.toString().split(/[\r\n]+/);
-        res.json({
-            result: lines[line],
-        });
+        // res.json({
+        //     result: lines[line],
+        // });
+        res.send(lines[line])
     });
 });
 
