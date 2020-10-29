@@ -53,6 +53,7 @@ function nodefind() {
         const request = new XMLHttpRequest();
         request.open("get", `http://localhost:3000/node/write?input=${document.getElementById("ln").value}`)
         request.onload = function() {
+		document.getElementById("find_area").style.visibility = "visible";
             document.getElementById("find_result").innerHTML = request.responseText;
        //     var obj = JSON.parse(request.responseText);
        //     if (typeof obj.message == "undefined") {
