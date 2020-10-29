@@ -53,14 +53,14 @@ function nodefind() {
         const request = new XMLHttpRequest();
         request.open("get", `http://localhost:3000/node/write?input=${document.getElementById("ln").value}`)
         request.onload = function() {
-            
-            var obj = JSON.parse(request.responseText);
-            if (typeof obj.message == "undefined") {
-		document.getElementById("find_area").style.visibility = "visible";
-                document.getElementById("find_result").innerHTML = obj.result;
-            } else {
-                document.getElementById("find_result").innerHTML = obj.message;
-            }
+            document.getElementById("find_result").innerHTML = request.responseText;
+       //     var obj = JSON.parse(request.responseText);
+       //     if (typeof obj.message == "undefined") {
+	//	document.getElementById("find_area").style.visibility = "visible";
+        //        document.getElementById("find_result").innerHTML = obj.result;
+        //    } else {
+        //        document.getElementById("find_result").innerHTML = obj.message;
+        //    }
 
         //    console.log(request.responseText);
         }
