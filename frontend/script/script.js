@@ -31,7 +31,12 @@ function goadd() {
         request.onload = function() {
             document.getElementById("result_area").style.visibility = "visible";
             var obj = JSON.parse(request.responseText);
-            document.getElementById("result").innerHTML = obj.result;
+            if (typeof obj.message == "undefined") {
+                document.getElementById("result").innerHTML = obj.result;
+            } else {
+                document.getElementById("result").innerHTML = obj.message;
+            }
+            console.log(request.responseText);
         }
         request.send(new FormData(add_form));
     })
@@ -68,7 +73,11 @@ function gofind() {
             document.getElementById("find_area").style.visibility = "visible";
             var obj = JSON.parse(request.responseText);
 
-            document.getElementById("find_result").innerHTML = obj.result;
+            if (typeof obj.message == "undefined") {
+                document.getElementById("find_result").innerHTML = obj.result;
+            } else {
+                document.getElementById("find_result").innerHTML = obj.message;
+            }
         }
         request.send(new FormData(find_form));
     })
