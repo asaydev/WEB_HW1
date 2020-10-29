@@ -10,6 +10,7 @@ function nodeadd() {
         request.open("post", `http://localhost:3000/node/sha256?firsinput=${first_num}&secondinput=${second_num}`)
         request.onload = function() {
             // console.log(request.responseText);
+
             document.getElementById("result_area").style.visibility = "visible";
             var obj = JSON.parse(request.responseText);
             if (typeof obj.message == "undefined") {
@@ -17,7 +18,7 @@ function nodeadd() {
             } else {
                 document.getElementById("result").innerHTML = obj.message;
             }
-            console.log(request.responseText);
+        
         }
         request.send(new FormData(add_form));
     })
@@ -29,14 +30,17 @@ function goadd() {
         const request = new XMLHttpRequest();
         request.open("post", `http://localhost:8080/sha256?firstinput=${document.getElementById("fi").value}&secondinput=${document.getElementById("si").value}`);
         request.onload = function() {
+	     
             document.getElementById("result_area").style.visibility = "visible";
+ 	    document.getElementById("result").innerHTML = request.responseText;
             var obj = JSON.parse(request.responseText);
             if (typeof obj.message == "undefined") {
+	
                 document.getElementById("result").innerHTML = obj.Result;
             } else {
-                document.getElementById("result").innerHTML = obj.message;
+                document.getElementById("result").innerHTML = request.responseText;
             }
-            console.log(request.responseText);
+         //   console.log(request.responseText);
         }
         request.send(new FormData(add_form));
     })
@@ -49,15 +53,16 @@ function nodefind() {
         const request = new XMLHttpRequest();
         request.open("get", `http://localhost:3000/node/write?input=${document.getElementById("ln").value}`)
         request.onload = function() {
-            document.getElementById("find_area").style.visibility = "visible";
+            
             var obj = JSON.parse(request.responseText);
             if (typeof obj.message == "undefined") {
+		document.getElementById("find_area").style.visibility = "visible";
                 document.getElementById("find_result").innerHTML = obj.result;
             } else {
                 document.getElementById("find_result").innerHTML = obj.message;
             }
 
-            console.log(request.responseText);
+        //    console.log(request.responseText);
         }
         request.send(new FormData(find_form));
     })
@@ -71,13 +76,9 @@ function gofind() {
         request.open("get", `http://localhost:8080/write?input=${document.getElementById("ln").value}`)
         request.onload = function() {
             document.getElementById("find_area").style.visibility = "visible";
-            var obj = JSON.parse(request.responseText);
-
-            if (typeof obj.message == "undefined") {
-                document.getElementById("find_result").innerHTML = obj.Result;
-            } else {
-                document.getElementById("find_result").innerHTML = obj.message;
-            }
+	
+	 document.getElementById("find_result").innerHTML = request.responseText;
+      
         }
         request.send(new FormData(find_form));
     })
