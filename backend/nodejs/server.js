@@ -18,7 +18,7 @@ app.post("/node/sha256", (req, res) => {
     if (isNaN(num1) || isNaN(num2)) {
         return res.status(400).json({message: "inputs must be numbers"})
     }
-    const hash = crypto.createHash('sha256').update((num1 + num2).toString()).digest('base64');
+    const hash = crypto.createHash('sha256').update((parseInt(num1) + parseInt(num2)).toString()).digest('base64');
     res.json({
         result: hash,
     });
