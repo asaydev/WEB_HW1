@@ -27,7 +27,7 @@ function goadd() {
     add_form.addEventListener("submit", (e) => {
         e.preventDefault();
         const request = new XMLHttpRequest();
-        request.open("post", `http://localhost:8080/sha256?firstinput=${first_num}&secondinput=${second_num}`)
+        request.open("post", `http://localhost:8080/sha256?firstinput=${document.getElementById("fi").value}&secondinput=${document.getElementById("si").value}`);
         request.onload = function() {
             document.getElementById("result_area").style.visibility = "visible";
             var obj = JSON.parse(request.responseText);
