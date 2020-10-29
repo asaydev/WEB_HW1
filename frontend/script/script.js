@@ -32,7 +32,7 @@ function goadd() {
             document.getElementById("result_area").style.visibility = "visible";
             var obj = JSON.parse(request.responseText);
             if (typeof obj.message == "undefined") {
-                document.getElementById("result").innerHTML = obj.result;
+                document.getElementById("result").innerHTML = obj.Result;
             } else {
                 document.getElementById("result").innerHTML = obj.message;
             }
@@ -74,7 +74,7 @@ function gofind() {
             var obj = JSON.parse(request.responseText);
 
             if (typeof obj.message == "undefined") {
-                document.getElementById("find_result").innerHTML = obj.result;
+                document.getElementById("find_result").innerHTML = obj.Result;
             } else {
                 document.getElementById("find_result").innerHTML = obj.message;
             }
