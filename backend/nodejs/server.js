@@ -32,8 +32,8 @@ app.get("/node/write", (req, res) => {
     if (isNaN(line)) {
         return res.status(400).json({message: "input must be a number"})
     }
-    if (line < 0 || line > 100) {
-        return res.status(400).json({message: "line number must be between 0 and 100"})
+    if (line < 1 || line > 100) {
+        return res.status(400).json({message: "line number must be between 1 and 100"})
     }
     file = fs.readFile("./test.txt", function (err, data) {
         if (err) return res.status(500).json({message: "internal server error"});
@@ -41,7 +41,8 @@ app.get("/node/write", (req, res) => {
         // res.json({
         //     result: lines[line],
         // });
-        res.send(lines[line])
+        // console.log(lines[line])
+        res.send(lines[line-1])
     });
 });
 
