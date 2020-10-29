@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"os"
 	"strconv"
+
 	"github.com/gorilla/mux"
 )
 
@@ -33,7 +34,7 @@ func handleRequest() {
 }
 
 func write(w http.ResponseWriter, req *http.Request) {
-
+	enableCors(&w)
 	if req.Method == http.MethodGet {
 		// get values from parametrs
 		input := req.FormValue("input")
@@ -73,7 +74,7 @@ func write(w http.ResponseWriter, req *http.Request) {
 }
 
 func sha(w http.ResponseWriter, req *http.Request) {
-
+	enableCors(&w)
 	if req.Method == http.MethodPost {
 		// get values from parametrs
 		num1 := req.FormValue("firstinput")
@@ -131,4 +132,8 @@ func ReadLine(lineNum int) (line string, err error) {
 		}
 	}
 	return "", io.EOF
+}
+
+func enableCors(w *http.ResponseWriter) {
+	(*w).Header().Set("Access-Control-Allow-Origin", "*")
 }
