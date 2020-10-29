@@ -52,7 +52,7 @@ function nodefind() {
             document.getElementById("find_area").style.visibility = "visible";
             var obj = JSON.parse(request.responseText);
             if (typeof obj.message == "undefined") {
-                document.getElementById("find_result").innerHTML = obj.result;
+                document.getElementById("find_result").innerHTML = obj.Result;
             } else {
                 document.getElementById("find_result").innerHTML = obj.message;
             }
