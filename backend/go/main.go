@@ -28,8 +28,8 @@ func main() {
 
 func handleRequest() {
 	router := mux.NewRouter().StrictSlash(true)
-	router.HandleFunc("go/sha256", sha)
-	router.HandleFunc("go/write", write)
+	router.HandleFunc("/go/sha256", sha)
+	router.HandleFunc("/go/write", write)
 	http.ListenAndServe(":"+port, router)
 }
 
