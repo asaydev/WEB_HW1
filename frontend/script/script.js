@@ -8,7 +8,7 @@ function nodeadd() {
         e.preventDefault();
         const request = new XMLHttpRequest();
         request.open("post", `http://localhost:3000/node/sha256?firstinput=${document.getElementById("fi").value}&secondinput=${document.getElementById("si").value}`)
-        request.onload = function () {
+        request.onload = function() {
             // console.log(request.responseText);
 
             document.getElementById("result_area").style.visibility = "visible";
@@ -29,7 +29,7 @@ function goadd() {
         e.preventDefault();
         const request = new XMLHttpRequest();
         request.open("post", `http://localhost:8080/sha256?firstinput=${document.getElementById("fi").value}&secondinput=${document.getElementById("si").value}`);
-        request.onload = function () {
+        request.onload = function() {
 
             document.getElementById("result_area").style.visibility = "visible";
             document.getElementById("result").innerHTML = request.responseText;
@@ -51,8 +51,8 @@ function nodefind() {
     find_form.addEventListener("submit", (e) => {
         e.preventDefault();
         const request = new XMLHttpRequest();
-        request.open("get", `http://localhost:3000/node/write?input=${document.getElementById("ln").value}`)
-        request.onload = function () {
+        request.open("get", `http://10.211.55.20/node/write?input=${document.getElementById("ln").value}`)
+        request.onload = function() {
             document.getElementById("find_area").style.visibility = "visible";
             document.getElementById("find_result").innerHTML = request.responseText;
             //     var obj = JSON.parse(request.responseText);
@@ -75,7 +75,7 @@ function gofind() {
         e.preventDefault();
         const request = new XMLHttpRequest();
         request.open("get", `http://localhost:8080/write?input=${document.getElementById("ln").value}`)
-        request.onload = function () {
+        request.onload = function() {
             document.getElementById("find_area").style.visibility = "visible";
 
             document.getElementById("find_result").innerHTML = request.responseText;
