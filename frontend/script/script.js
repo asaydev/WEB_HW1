@@ -7,7 +7,7 @@ function nodeadd() {
     add_form.addEventListener("submit", (e) => {
         e.preventDefault();
         const request = new XMLHttpRequest();
-        request.open("post", `http://localhost:3000/node/sha256?firstinput=${document.getElementById("fi").value}&secondinput=${document.getElementById("si").value}`)
+        request.open("post", `http://10.211.55.20/node/sha256?firstinput=${document.getElementById("fi").value}&secondinput=${document.getElementById("si").value}`)
         request.onload = function() {
             // console.log(request.responseText);
 
