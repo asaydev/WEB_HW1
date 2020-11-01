@@ -9,8 +9,6 @@ function nodeadd() {
         const request = new XMLHttpRequest();
         request.open("post", `http://10.211.55.20/node/sha256?firstinput=${document.getElementById("fi").value}&secondinput=${document.getElementById("si").value}`)
         request.onload = function() {
-            // console.log(request.responseText);
-
             document.getElementById("result_area").style.visibility = "visible";
             var obj = JSON.parse(request.responseText);
             if (typeof obj.message == "undefined") {
@@ -40,7 +38,6 @@ function goadd() {
             } else {
                 document.getElementById("result").innerHTML = request.responseText;
             }
-            //   console.log(request.responseText);
         }
         request.send(new FormData(add_form));
     })
@@ -55,15 +52,6 @@ function nodefind() {
         request.onload = function() {
             document.getElementById("find_area").style.visibility = "visible";
             document.getElementById("find_result").innerHTML = request.responseText;
-            //     var obj = JSON.parse(request.responseText);
-            //     if (typeof obj.message == "undefined") {
-            //	document.getElementById("find_area").style.visibility = "visible";
-            //        document.getElementById("find_result").innerHTML = obj.result;
-            //    } else {
-            //        document.getElementById("find_result").innerHTML = obj.message;
-            //    }
-
-            //    console.log(request.responseText);
         }
         request.send(new FormData(find_form));
     })
